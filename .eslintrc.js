@@ -11,4 +11,7 @@ module.exports = {
         "max-len": "off",
         "no-console": "off",
     },
+    "env": {
+        "browser": true
+    }
 };
