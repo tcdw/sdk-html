@@ -6,6 +6,7 @@ import replace from 'rollup-plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
 import progress from 'rollup-plugin-progress';
 import json from 'rollup-plugin-json';
+import nodent from 'rollup-plugin-nodent';
 
 const base = {
     input: 'src/sdk.js',
@@ -28,6 +29,10 @@ const base = {
         json(),
         eslint({
             exclude: ['**/*.html', '**/*.css', '**/*.json'],
+        }),
+        nodent({
+            promises: true,
+            noRuntime: true,
         }),
         buble({
             transforms: {
