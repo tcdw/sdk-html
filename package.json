@@ -1,0 +1,28 @@
+{
+  "name": "@pomment/sdk",
+  "version": "1.0.0",
+  "description": "Pomment JavaScript SDK",
+  "main": "dist/pomment-sdk.min.js",
+  "repository": "git@git.reallserver.cn:pomment/sdk-v2.git",
+  "author": "tcdw <tcdw2011@gmail.com>",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "rollup": "^0.67.3",
+    "rollup-plugin-buble": "^0.19.4",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-progress": "^0.4.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-uglify": "^6.0.0"
+  },
+  "scripts": {
+    "dev": "rollup -c ./scripts/rollup.config.js -w",
+    "build": "NODE_ENV=production rollup -c ./scripts/rollup.config.js",
+    "lint": "eslint --ext .js src"
+  }
+}
