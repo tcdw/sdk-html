@@ -12,7 +12,7 @@ const ajax = ({
         }
     };
     request.onerror = () => {
-        reject(new ReferenceError('An error occurred when connect to the server'));
+        reject(new Error('An error occurred when connect to the server'));
     };
     if (data) {
         request.setRequestHeader('content-type', 'application/json');
