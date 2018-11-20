@@ -34,6 +34,51 @@ class Pomment {
         return JSON.parse(result);
     }
 
+    async submitComment({
+        title = this.defaultTitle,
+        url = this.defaultURL,
+        parent = -1,
+        name,
+        email,
+        website,
+        content,
+        receiveEmail,
+        responseKey = null,
+    }) {
+        const result = await ajax({
+            url: `${this.server}/v2/submit`,
+            data: {
+                title,
+                url,
+                parent,
+                name,
+                email,
+                website,
+                content,
+                receiveEmail,
+                responseKey,
+            },
+        });
+        return JSON.parse(result);
+    }
+
+    async editComment({
+        url = this.defaultURL,
+        id,
+        editKey,
+        content,
+    }) {
+        await ajax({
+            url: `${this.server}/v2/submit`,
+            data: {
+                url,
+                id,
+                editKey,
+                content,
+            },
+        });
+    }
+
     static setAJAXHandler(func) {
         if (process.env.NODE_ENV === 'production') {
             throw new Error('This function is not avaliable in production build');
