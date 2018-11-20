@@ -17,14 +17,20 @@ class Pomment {
         /** 服务器地址 */
         this.server = server;
         /** 默认使用的评论 URL */
-        this.defaultURL = defaultURL || this._d.querySelector('link[rel=canonical]');
+        this.defaultURL = defaultURL || (() => {
+            const elem = this._d.querySelector('link[rel=canonical]');
+            if (elem) {
+                return elem.href;
+            }
+            return undefined;
+        })();
         /** 默认使用的评论标题 */
         this.defaultTitle = defaultTitle;
     }
 
     async listComments({
-        url = this.defaultTitle,
-    }) {
+        url = this.defaultURL,
+    } = {}) {
         const result = await ajax({
             url: `${this.server}/v2/list`,
             data: {
@@ -69,7 +75,7 @@ class Pomment {
         content,
     }) {
         await ajax({
-            url: `${this.server}/v2/submit`,
+            url: `${this.server}/v2/edit`,
             data: {
                 url,
                 id,
@@ -77,6 +83,11 @@ class Pomment {
                 content,
             },
         });
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    toString() {
+        return '[object Pomment]';
     }
 
     static setAJAXHandler(func) {
