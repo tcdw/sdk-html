@@ -31,13 +31,16 @@ class Pomment {
     async listComments({
         url = this.defaultURL,
     } = {}) {
-        const result = await ajax({
+        const result = JSON.parse(await ajax({
             url: `${this.server}/v2/list`,
             data: {
                 url,
             },
-        });
-        return JSON.parse(result);
+        }));
+        for (let i = 0; i < result.content.length; i += 1) {
+            result.content[i].createdAt = new Date(result.content[i].createdAt);
+        }
+        return result;
     }
 
     async submitComment({
@@ -65,6 +68,7 @@ class Pomment {
                 responseKey,
             },
         });
+        result.createdAt = new Date(result.createdAt);
         return JSON.parse(result);
     }
 
