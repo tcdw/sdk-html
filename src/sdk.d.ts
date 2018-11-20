@@ -16,6 +16,17 @@ interface CommentResults {
     content: CommentEntry[];
 }
 
+interface SubmitResults {
+    id: number;
+    name: string;
+    email: string;
+    website: string;
+    parent: number;
+    content: string;
+    editKey: string;
+    createdAt: Date;
+};
+
 declare class Pomment {
     constructor({ server, defaultGlobal, defaultDocument, defaultURL, defaultTitle, }: {
         server: string;
@@ -28,6 +39,18 @@ declare class Pomment {
     listComments({ url, }?: {
         url?: string;
     }): Promise<CommentResults>;
+
+    submitComment({ title, url, parent, name, email, website, content, receiveEmail, responseKey, }: {
+        title?: string;
+        url?: string;
+        parent?: number;
+        name: string;
+        email: string;
+        website: string;
+        content: string;
+        receiveEmail: boolean;
+        responseKey?: string;
+    }): Promise<SubmitResults>;
 }
 
 export default Pomment;
