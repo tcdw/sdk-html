@@ -54,7 +54,7 @@ class Pomment {
         receiveEmail,
         responseKey = null,
     }) {
-        const result = await ajax({
+        const result = JSON.parse(await ajax({
             url: `${this.server}/v2/submit`,
             data: {
                 title,
@@ -67,9 +67,9 @@ class Pomment {
                 receiveEmail,
                 responseKey,
             },
-        });
+        }));
         result.createdAt = new Date(result.createdAt);
-        return JSON.parse(result);
+        return result;
     }
 
     async editComment({
