@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pomment SDK Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, button, input {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pomment SDK Demo</h1>
+    <button id="p-init">构建 Pomment 实例到 window.pomment</button>
+    <div id="p-other" style="display: none">
+        <hr>
+        <!-- Pomment 实例属性 -->
+        服务器：<input id="p-info-server"><br>
+        页面地址：<input id="p-info-address"><br>
+        页面标题：<input id="p-info-title"><br>
+        <button id="p-info">变更</button>
+        <hr>
+        <!-- Pomment 函数：列出评论 -->
+        <button id="p-list-c">列出评论</button>
+    </div>
+    <script src="dist/pomment-sdk.js"></script>
+    <script>
+        'use strict';
+        function _e(id) {
+            return document.getElementById(id);
+        }
+        _e('p-init').addEventListener('click', () => {
+            window.pomment = new Pomment({
+                server: 'http://127.0.0.1:5005',
+                defaultURL: 'https://www.tcdw.net/post/about/',
+                defaultTitle: '标题'
+            });
+            _e('p-other').style.display = 'block';
+            _e('p-info-server').value = pomment.server;
+            _e('p-info-address').value = pomment.defaultURL;
+            _e('p-info-title').value = pomment.defaultTitle;
+        });
+        _e('p-info').addEventListener('click', () => {
+            pomment.server = _e('p-info-server').value;
+            pomment.defaultURL = _e('p-info-address').value;
+            pomment.defaultTitle = _e('p-info-title').value;
+            console.log(pomment);
+        });
+        _e('p-list-c').addEventListener('click', async () => {
+            console.time('操作用时');
+            console.log(await pomment.listComments());
+            console.timeEnd('操作用时');
+        });
+    </script>
+</body>
+</html>
