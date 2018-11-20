@@ -9,6 +9,9 @@
         body, button, input {
             font-size: 20px;
         }
+        code {
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -17,21 +20,27 @@
     <div id="p-other" style="display: none">
         <hr>
         <!-- Pomment 实例属性 -->
-        服务器：<input id="p-info-server"><br>
-        页面地址：<input id="p-info-address"><br>
-        页面标题：<input id="p-info-title"><br>
+        <code>Pomment.prototype.server          </code><input id="p-info-server"><br>
+        <code>Pomment.prototype.defaultURL      </code><input id="p-info-address"><br>
+        <code>Pomment.prototype.defaultTitle    </code><input id="p-info-title"><br>
         <button id="p-info">变更</button>
         <hr>
         <!-- Pomment 函数：列出评论 -->
-        <button id="p-list-c">列出评论</button>
+        <button id="p-list-c"><code>Pomment.prototype.listComments()</code></button>
         <hr>
         <!-- Pomment 函数：发表评论 -->
-        昵称：<input id="p-submit-name"><br>
-        电子邮件：<input id="p-submit-email"><br>
-        主页：<input id="p-submit-website"><br>
-        正文：<input id="p-submit-content"><br>
-        <input type="checkbox" id="p-submit-sub"><label for="p-submit-sub">接收邮件提醒</label><br>
-        <button id="p-submit">提交</button>
+        <code>name      </code><input id="p-submit-name" value="alice"><br>
+        <code>email     </code><input id="p-submit-email" value="alice@example.com"><br>
+        <code>website   </code><input id="p-submit-website" value="https://example.com"><br>
+        <code>content   </code><input id="p-submit-content"><br>
+        <input type="checkbox" id="p-submit-sub"><label for="p-submit-sub"><code>receiveEmail</code></label><br>
+        <button id="p-submit"><code>Pomment.prototype.submitComment()</code></button>
+        <!-- Pomment 函数：编辑评论 -->
+        <hr>
+        <code>id        </code><input id="p-edit-id" type="number"><br>
+        <code>editKey   </code><input id="p-edit-key"><br>
+        <code>content   </code><input id="p-edit-content"><br>
+        <button id="p-edit"><code>Pomment.prototype.editComment()</code></button>
     </div>
     <script src="dist/pomment-sdk.js"></script>
     <script>
@@ -39,6 +48,7 @@
         function _e(id) {
             return document.getElementById(id);
         }
+
         _e('p-init').addEventListener('click', () => {
             window.pomment = new Pomment({
                 server: 'http://127.0.0.1:5005',
@@ -50,27 +60,37 @@
             _e('p-info-address').value = pomment.defaultURL;
             _e('p-info-title').value = pomment.defaultTitle;
         });
+
         _e('p-info').addEventListener('click', () => {
             pomment.server = _e('p-info-server').value;
             pomment.defaultURL = _e('p-info-address').value;
             pomment.defaultTitle = _e('p-info-title').value;
             console.log(pomment);
         });
+
         _e('p-list-c').addEventListener('click', async () => {
-            console.time('操作用时');
             console.log(await pomment.listComments());
-            console.timeEnd('操作用时');
         });
+
         _e('p-submit').addEventListener('click', async () => {
-            console.time('操作用时');
-            console.log(await pomment.submitComment({
+            const result = await pomment.submitComment({
                 name: _e('p-submit-name').value,
                 email: _e('p-submit-email').value,
                 website: _e('p-submit-website').value,
                 content: _e('p-submit-content').value,
                 receiveEmail: _e('p-submit-sub').checked,
+            });
+            console.log(result);
+            _e('p-edit-id').value = result.id;
+            _e('p-edit-key').value = result.editKey;
+        });
+
+        _e('p-edit').addEventListener('click', async () => {
+            console.log(await pomment.editComment({
+                id: Number(_e('p-edit-id').value),
+                editKey: _e('p-edit-key').value,
+                content: _e('p-edit-content').value,
             }));
-            console.timeEnd('操作用时');
         });
     </script>
 </body>

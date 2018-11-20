@@ -51,6 +51,13 @@ declare class Pomment {
         receiveEmail: boolean;
         responseKey?: string;
     }): Promise<SubmitResults>;
+
+    editComment({ url, id, editKey, content, }: {
+        url?: string;
+        id: number;
+        editKey: string;
+        content: string;
+    }): Promise<void>
 }
 
 export default Pomment;
