@@ -24,6 +24,14 @@
         <hr>
         <!-- Pomment 函数：列出评论 -->
         <button id="p-list-c">列出评论</button>
+        <hr>
+        <!-- Pomment 函数：发表评论 -->
+        昵称：<input id="p-submit-name"><br>
+        电子邮件：<input id="p-submit-email"><br>
+        主页：<input id="p-submit-website"><br>
+        正文：<input id="p-submit-content"><br>
+        <input type="checkbox" id="p-submit-sub"><label for="p-submit-sub">接收邮件提醒</label><br>
+        <button id="p-submit">提交</button>
     </div>
     <script src="dist/pomment-sdk.js"></script>
     <script>
@@ -51,6 +59,17 @@
         _e('p-list-c').addEventListener('click', async () => {
             console.time('操作用时');
             console.log(await pomment.listComments());
+            console.timeEnd('操作用时');
+        });
+        _e('p-submit').addEventListener('click', async () => {
+            console.time('操作用时');
+            console.log(await pomment.submitComment({
+                name: _e('p-submit-name').value,
+                email: _e('p-submit-email').value,
+                website: _e('p-submit-website').value,
+                content: _e('p-submit-content').value,
+                receiveEmail: _e('p-submit-sub').checked,
+            }));
             console.timeEnd('操作用时');
         });
     </script>
