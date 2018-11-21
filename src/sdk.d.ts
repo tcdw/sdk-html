@@ -28,6 +28,12 @@ interface SubmitResults {
 };
 
 declare class Pomment {
+    server: string;
+    defaultURL: string;
+    defaultTitle: string;
+    private _g: Window;
+    private _d: Document;
+
     constructor({ server, defaultGlobal, defaultDocument, defaultURL, defaultTitle, }: {
         server: string;
         defaultGlobal?: Window;
