@@ -1,4 +1,4 @@
-interface CommentEntry {
+interface Comment {
     id: number;
     name: string;
     emailHashed: string;
@@ -13,7 +13,7 @@ interface CommentEntry {
 interface CommentResults {
     url: string;
     locked: boolean;
-    content: CommentEntry[];
+    content: Comment[];
 }
 
 interface SubmitResults {
