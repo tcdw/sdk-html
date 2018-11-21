@@ -93,6 +93,21 @@ class Pomment {
         });
     }
 
+    async deleteComment({
+        url = this.defaultURL,
+        id,
+        editKey,
+    }) {
+        await ajax({
+            url: `${this.server}/v2/delete`,
+            data: {
+                url,
+                id,
+                editKey,
+            },
+        });
+    }
+
     // eslint-disable-next-line class-methods-use-this
     toString() {
         return '[object Pomment]';

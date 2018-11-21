@@ -63,7 +63,13 @@ declare class Pomment {
         id: number;
         editKey: string;
         content: string;
-    }): Promise<void>
+    }): Promise<void>;
+
+    deleteComment({ url, id, editKey, }: {
+        url?: string;
+        id: number;
+        editKey: string;
+    }): Promise<void>;
 }
 
 export default Pomment;
