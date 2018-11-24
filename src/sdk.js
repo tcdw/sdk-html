@@ -1,3 +1,4 @@
+import sha256 from 'hash.js/lib/hash/sha/256';
 import originalAJAX from './lib/ajax';
 import setName from './lib/set_name';
 
@@ -27,6 +28,8 @@ class Pomment {
         })();
         /** 默认使用的评论标题 */
         this.defaultTitle = defaultTitle;
+        /** 管理员密码的 hash */
+        this._password = null;
     }
 
     async listComments({
@@ -106,6 +109,17 @@ class Pomment {
                 editKey,
             },
         });
+    }
+
+    setPassword(password) {
+        if (typeof password !== 'string') {
+            throw new TypeError('Password should be string');
+        }
+        if (!password) {
+            this._password = null;
+            return;
+        }
+        this._password = sha256().update(password).digest('hex');
     }
 
     // eslint-disable-next-line class-methods-use-this
