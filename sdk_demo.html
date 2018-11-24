@@ -41,6 +41,11 @@
         <code>editKey   </code><input id="p-edit-key"><br>
         <code>content   </code><input id="p-edit-content"><br>
         <button id="p-edit"><code>Pomment.prototype.editComment()</code></button>
+        <!-- Pomment 函数：删除评论 -->
+        <hr>
+        <code>id        </code><input id="p-delete-id" type="number"><br>
+        <code>editKey   </code><input id="p-delete-key"><br>
+        <button id="p-delete"><code>Pomment.prototype.deleteComment()</code></button>
     </div>
     <script src="dist/pomment-sdk.js"></script>
     <script>
@@ -83,6 +88,8 @@
             console.log(result);
             _e('p-edit-id').value = result.id;
             _e('p-edit-key').value = result.editKey;
+            _e('p-delete-id').value = result.id;
+            _e('p-delete-key').value = result.editKey;
         });
 
         _e('p-edit').addEventListener('click', async () => {
@@ -90,6 +97,13 @@
                 id: Number(_e('p-edit-id').value),
                 editKey: _e('p-edit-key').value,
                 content: _e('p-edit-content').value,
+            }));
+        });
+
+        _e('p-delete').addEventListener('click', async () => {
+            console.log(await pomment.editComment({
+                id: Number(_e('p-delete-id').value),
+                editKey: _e('p-delete-key').value,
             }));
         });
     </script>

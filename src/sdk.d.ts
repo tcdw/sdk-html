@@ -25,7 +25,7 @@ interface SubmitResults {
     content: string;
     editKey: string;
     createdAt: Date;
-};
+}
 
 declare class Pomment {
     server: string;
