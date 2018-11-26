@@ -26,7 +26,5 @@
     "build": "NODE_ENV=production rollup -c ./scripts/rollup.config.js",
     "lint": "eslint --ext .js src"
   },
-  "dependencies": {
-    "hash.js": "^1.1.5"
-  }
+  "dependencies": {}
 }

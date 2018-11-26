@@ -1,4 +1,3 @@
-import sha256 from 'hash.js/lib/hash/sha/256';
 import originalAJAX from './lib/ajax';
 import setName from './lib/set_name';
 
@@ -111,7 +110,7 @@ class Pomment {
         });
     }
 
-    setPassword(password) {
+    setHashedPassword(password) {
         if (typeof password !== 'string') {
             throw new TypeError('Password should be string');
         }
@@ -119,7 +118,7 @@ class Pomment {
             this._password = null;
             return;
         }
-        this._password = sha256().update(password).digest('hex');
+        this._password = password;
     }
 
     // eslint-disable-next-line class-methods-use-this
