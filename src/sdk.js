@@ -22,7 +22,7 @@ class Pomment {
             if (elem) {
                 return elem.href;
             }
-            return undefined;
+            return this._d.location;
         })();
         /** 默认使用的评论标题 */
         this.defaultTitle = defaultTitle;
