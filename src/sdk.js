@@ -1,5 +1,4 @@
 import originalAJAX from './lib/ajax';
-import setName from './lib/set_name';
 
 let ajax = originalAJAX;
 
@@ -42,9 +41,7 @@ class Pomment {
         }));
         for (let i = 0; i < result.content.length; i += 1) {
             result.content[i].createdAt = new Date(result.content[i].createdAt);
-            setName(result.content[i], 'Comment');
         }
-        setName(result, 'CommentResults');
         return result;
     }
 
@@ -74,7 +71,6 @@ class Pomment {
             },
         }));
         result.createdAt = new Date(result.createdAt);
-        setName(result, 'SubmitResults');
         return result;
     }
 
