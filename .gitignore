@@ -1,4 +1,5 @@
-dist/
+dist/*.js
+dist/*.map
 
 # General
 .DS_Store
