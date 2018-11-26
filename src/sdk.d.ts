@@ -70,6 +70,8 @@ declare class Pomment {
         id: number;
         editKey: string;
     }): Promise<void>;
+
+    setHashedPassword(password: string): void;
 }
 
 export default Pomment;

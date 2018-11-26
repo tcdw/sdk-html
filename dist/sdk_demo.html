@@ -46,6 +46,11 @@
         <code>id        </code><input id="p-delete-id" type="number"><br>
         <code>editKey   </code><input id="p-delete-key"><br>
         <button id="p-delete"><code>Pomment.prototype.deleteComment()</code></button>
+        <!-- Pomment 函数：设置密码 -->
+        <hr>
+        <code>（密码原文是 Aaaaaaaa）</code><br>
+        <code>value     </code><input id="p-pass-val" value="619df622ed1e20b4fb9851c01f18f4e14fc1964022d0cafce4ac5f62089a2702"><br>
+        <button id="p-pass"><code>Pomment.prototype.setHashedPassword()</code></button>
     </div>
     <script src="pomment-sdk.js"></script>
     <script>
@@ -105,6 +110,9 @@
                 id: Number(_e('p-delete-id').value),
                 editKey: _e('p-delete-key').value,
             }));
+        });
+        _e('p-pass').addEventListener('click', async () => {
+            console.log(pomment.setHashedPassword(_e('p-pass-val').value));
         });
     </script>
 </body>
