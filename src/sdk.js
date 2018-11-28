@@ -124,14 +124,13 @@ class Pomment {
     async deleteCommentAdmin({
         url = this.defaultURL,
         id,
-        token,
     }) {
         await ajax({
             url: `${this.server}/v2/manage/delete`,
             data: {
                 url,
                 id,
-                token,
+                token: this._password,
             },
         });
     }
@@ -140,7 +139,6 @@ class Pomment {
         url = this.defaultURL,
         id,
         content,
-        token,
     }) {
         await ajax({
             url: `${this.server}/v2/manage/edit`,
@@ -148,16 +146,16 @@ class Pomment {
                 url,
                 id,
                 content,
-                token,
+                token: this._password,
             },
         });
     }
 
-    async getThreadsAdmin({ token }) {
+    async getThreadsAdmin() {
         await ajax({
             url: `${this.server}/v2/manage/list-thread`,
             data: {
-                token,
+                token: this._password,
             },
         });
     }
@@ -168,7 +166,6 @@ class Pomment {
         parent = -1,
         content,
         receiveEmail,
-        token,
     }) {
         const result = JSON.parse(await ajax({
             url: `${this.server}/v2/manage/submit`,
@@ -178,7 +175,7 @@ class Pomment {
                 parent,
                 content,
                 receiveEmail,
-                token,
+                token: this._password,
             },
         }));
         result.createdAt = new Date(result.createdAt);
