@@ -153,7 +153,7 @@ class Pomment {
         });
     }
 
-    async getThreadsList({ token }) {
+    async getThreadsAdmin({ token }) {
         await ajax({
             url: `${this.server}/v2/manage/list-thread`,
             data: {
