@@ -162,6 +162,29 @@ class Pomment {
         });
     }
 
+    async submitCommentAdmin({
+        title = this.defaultTitle,
+        url = this.defaultURL,
+        parent = -1,
+        content,
+        receiveEmail,
+        token,
+    }) {
+        const result = JSON.parse(await ajax({
+            url: `${this.server}/v2/manage/submit`,
+            data: {
+                title,
+                url,
+                parent,
+                content,
+                receiveEmail,
+                token,
+            },
+        }));
+        result.createdAt = new Date(result.createdAt);
+        return result;
+    }
+
     static setAJAXHandler(func) {
         if (process.env.NODE_ENV === 'production') {
             throw new Error('This function is not avaliable in production build');
