@@ -153,6 +153,15 @@ class Pomment {
         });
     }
 
+    async getThreadsList({ token }) {
+        await ajax({
+            url: `${this.server}/v2/manage/list-thread`,
+            data: {
+                token,
+            },
+        });
+    }
+
     static setAJAXHandler(func) {
         if (process.env.NODE_ENV === 'production') {
             throw new Error('This function is not avaliable in production build');
