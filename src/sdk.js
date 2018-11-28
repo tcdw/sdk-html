@@ -121,6 +121,21 @@ class Pomment {
         this._password = null;
     }
 
+    async deleteCommentAdmin({
+        token,
+        url = this.defaultURL,
+        id,
+    }) {
+        await ajax({
+            url: `${this.server}/v2/manage/delete`,
+            data: {
+                token,
+                url,
+                id,
+            },
+        });
+    }
+
     // eslint-disable-next-line class-methods-use-this
     toString() {
         return '[object Pomment]';
