@@ -143,7 +143,7 @@ class Pomment {
         token,
     }) {
         await ajax({
-            url: `${this.server}/v2/manage/delete`,
+            url: `${this.server}/v2/manage/edit`,
             data: {
                 url,
                 id,
