@@ -158,7 +158,7 @@ class Pomment {
                 token: this._password,
             },
         });
-        return result;
+        return JSON.parse(result);
     }
 
     async submitCommentAdmin({
