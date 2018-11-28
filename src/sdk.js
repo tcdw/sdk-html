@@ -152,12 +152,13 @@ class Pomment {
     }
 
     async getThreadsAdmin() {
-        await ajax({
+        const result = await ajax({
             url: `${this.server}/v2/manage/list-thread`,
             data: {
                 token: this._password,
             },
         });
+        return result;
     }
 
     async submitCommentAdmin({
