@@ -153,11 +153,6 @@ class Pomment {
         });
     }
 
-    // eslint-disable-next-line class-methods-use-this
-    toString() {
-        return '[object Pomment]';
-    }
-
     static setAJAXHandler(func) {
         if (process.env.NODE_ENV === 'production') {
             throw new Error('This function is not avaliable in production build');
