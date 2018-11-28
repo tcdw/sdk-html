@@ -122,16 +122,33 @@ class Pomment {
     }
 
     async deleteCommentAdmin({
-        token,
         url = this.defaultURL,
         id,
+        token,
     }) {
         await ajax({
             url: `${this.server}/v2/manage/delete`,
             data: {
-                token,
                 url,
                 id,
+                token,
+            },
+        });
+    }
+
+    async editCommentAdmin({
+        url = this.defaultURL,
+        id,
+        content,
+        token,
+    }) {
+        await ajax({
+            url: `${this.server}/v2/manage/delete`,
+            data: {
+                url,
+                id,
+                content,
+                token,
             },
         });
     }
