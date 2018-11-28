@@ -106,7 +106,7 @@ class Pomment {
         });
     }
 
-    setHashedPassword(password) {
+    login(password) {
         if (typeof password !== 'string') {
             throw new TypeError('Password should be string');
         }
@@ -115,6 +115,10 @@ class Pomment {
             return;
         }
         this._password = password;
+    }
+
+    logout() {
+        this._password = null;
     }
 
     // eslint-disable-next-line class-methods-use-this

@@ -71,7 +71,9 @@ declare class Pomment {
         editKey: string;
     }): Promise<void>;
 
-    setHashedPassword(password: string): void;
+    login(password: string): void;
+
+    logout(): void;
 }
 
 export default Pomment;
