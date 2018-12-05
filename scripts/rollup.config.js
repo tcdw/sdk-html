@@ -39,7 +39,7 @@ const base = {
                 modules: false,
                 dangerousForOf: true,
             },
-            objedtAssign: 'Object.assign',
+            objectAssign: 'Object.assign',
         }),
         replace({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),

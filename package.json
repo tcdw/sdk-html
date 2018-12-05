@@ -1,6 +1,6 @@
 {
   "name": "@pomment/sdk",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Pomment JavaScript SDK",
   "main": "dist/pomment-sdk.min.js",
   "repository": "git@git.reallserver.cn:pomment/sdk-v2.git",
