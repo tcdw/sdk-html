@@ -1,9 +1,9 @@
 {
   "name": "pomment-sdk",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Pomment JavaScript SDK",
   "main": "src/sdk.js",
-  "repository": "git@git.reallserver.cn:pomment/sdk-v2.git",
+  "repository": "https://github.com/pomment/sdk-html",
   "author": "tcdw <tcdw2011@gmail.com>",
   "license": "BSD-3-Clause",
   "devDependencies": {
