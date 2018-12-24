@@ -1,6 +1,6 @@
 {
   "name": "pomment-sdk",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Pomment JavaScript SDK",
   "main": "src/sdk.js",
   "repository": "https://github.com/pomment/sdk-html",
@@ -24,7 +24,8 @@
   "scripts": {
     "dev": "rollup -c ./scripts/rollup.config.js -w",
     "build": "NODE_ENV=production rollup -c ./scripts/rollup.config.js",
-    "lint": "eslint --ext .js src"
+    "lint": "eslint --ext .js src",
+    "publish": "NODE_ENV=production rollup -c ./scripts/rollup.config.js && yarn publish"
   },
   "dependencies": {}
 }

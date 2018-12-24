@@ -1,0 +1,4 @@
+dist/
+!dist/sdk_demo.html
+!dist/pomment-sdk.min.js
+!dist/pomment-sdk.min.js.map
