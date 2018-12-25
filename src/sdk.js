@@ -5,24 +5,22 @@ let ajax = originalAJAX;
 class Pomment {
     constructor({
         server,
-        defaultGlobal = window,
-        defaultDocument = document,
+        defaultWindow = window,
         defaultURL = '',
         defaultTitle = '',
     }) {
         /** （用户指定的）全局变量对象 */
-        this._g = defaultGlobal;
+        this._g = defaultWindow;
         /** （用户指定的）HTML 文档对象 */
-        this._d = defaultDocument;
         /** 服务器地址 */
         this.server = server;
         /** 默认使用的评论 URL */
         this.defaultURL = defaultURL || (() => {
-            const elem = this._d.querySelector('link[rel=canonical]');
+            const elem = this._g.document.querySelector('link[rel=canonical]');
             if (elem) {
                 return elem.href;
             }
-            return this._d.location;
+            return this._g.document.location.href;
         })();
         /** 默认使用的评论标题 */
         this.defaultTitle = defaultTitle;

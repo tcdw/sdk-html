@@ -34,10 +34,9 @@ declare class Pomment {
     private _g: Window;
     private _d: Document;
 
-    constructor({ server, defaultGlobal, defaultDocument, defaultURL, defaultTitle, }: {
+    constructor({ server, defaultWindow, defaultURL, defaultTitle, }: {
         server: string;
-        defaultGlobal?: Window;
-        defaultDocument?: Document;
+        defaultWindow?: Window;
         defaultURL?: string;
         defaultTitle?: string;
     });
