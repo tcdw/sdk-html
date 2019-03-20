@@ -23,7 +23,7 @@ class Pomment {
             return this._g.document.location.href;
         })();
         /** 默认使用的评论标题 */
-        this.defaultTitle = defaultTitle;
+        this.defaultTitle = defaultTitle || this._g.document.title;
         /** 管理员密码的 hash */
         this._password = null;
     }

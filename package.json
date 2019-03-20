@@ -1,6 +1,6 @@
 {
   "name": "pomment-sdk",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Pomment JavaScript SDK",
   "main": "src/sdk.js",
   "repository": "https://github.com/pomment/sdk-html",
