@@ -69,36 +69,6 @@ declare class Pomment {
         id: number;
         editKey: string;
     }): Promise<void>;
-
-    login(password: string): void;
-
-    logout(): void;
-
-    deleteCommentAdmin({ url, id, token, }: {
-        url?: string;
-        id: number;
-        token: string;
-    }): Promise<void>;
-
-    editCommentAdmin({ url, id, content, token, }: {
-        url?: string;
-        id: number;
-        content: string;
-        token: string;
-    }): Promise<void>;
-
-    getThreadsAdmin({ token }: {
-        token: string;
-    }): Promise<void>;
-
-    submitCommentAdmin({ title, url, parent, content, receiveEmail, token, }: {
-        title?: string;
-        url?: string;
-        parent?: number;
-        content: string;
-        receiveEmail: boolean;
-        token: string;
-    }): Promise<any>;
 }
 
 export default Pomment;

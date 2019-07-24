@@ -21,8 +21,6 @@ const base = {
             clearLine: false,
         }),
         resolve({
-            jsnext: true,
-            main: true,
             browser: true,
         }),
         commonjs(),
